@@ -2,9 +2,7 @@ package com.Project.Student.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -13,6 +11,9 @@ import java.util.UUID;
 @Setter
 @ToString
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Course {
 
     @Id

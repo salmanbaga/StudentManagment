@@ -1,8 +1,5 @@
 package com.Project.Student.Controller;
 
-import com.Project.Student.Entity.Course;
-import com.Project.Student.Entity.Studententity;
-import com.Project.Student.Entity.Subject;
 import com.Project.Student.Models.ResponceModel;
 import com.Project.Student.Service.Studentservice;
 import com.Project.Student.dto.Studentdto;
@@ -33,8 +30,8 @@ public class Student {
     }
 
     @PutMapping("/put/{id}")
-    public ResponceModel putdata(@PathVariable int id,@RequestBody Studententity studententity){
-        return studentservice.putdata(studententity,id);
+    public ResponceModel putdata(@PathVariable int id,@RequestBody Studentdto studentdto){
+        return studentservice.putdata(studentdto,id);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -48,7 +45,7 @@ public class Student {
     }
 
     @GetMapping("/count")
-    public String studcount(){
+    public ResponceModel studcount(){
         return studentservice.studcount();
     }
 

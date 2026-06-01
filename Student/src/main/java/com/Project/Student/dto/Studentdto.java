@@ -3,7 +3,10 @@ package com.Project.Student.dto;
 
 
 import com.Project.Student.Entity.Studententity;
+import com.Project.Student.Enums.Status;
 import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -35,24 +38,30 @@ public class Studentdto implements Serializable {
     @Column(unique = true)
     private String email;
 
+    @Enumerated(EnumType.STRING)
+    private Status status=Status.ACTIVE;
 
-    public Studententity toEntity() {
+
+    public static Studententity toEntity(Studentdto dto) {
         return Studententity.builder()
-                .id(this.id)
-                .name(this.name)
-                .age(this.age)
-                .email(this.email)
+                .id(dto.getId())
+                .name(dto.getName())
+                .age(dto.getAge())
+                .email(dto.getEmail())
+                .status(dto.getStatus())
                 .build();
     }
 
     public static Studentdto toDto(Studententity entity) {
-        return new Studentdto(
-                entity.getId(),
-                entity.getName(),
-                entity.getAge(),
-                entity.getEmail()
+        return  Studentdto.builder()
+                .id(entity.getId())
+                .name(entity.getName())
+                .age(entity.getAge())
+                .email(entity.getEmail())
+                .status(entity.getStatus())
+                .build();
 
-        );
+
     }
 
 }

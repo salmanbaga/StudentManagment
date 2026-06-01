@@ -11,6 +11,7 @@ public class ApiMessage {
     public static final String COURSE_CREATED="Course Saved Successfully";
     public static final String COURSE_FOUND="Course Found";
     public static final String COURSE_NOT_FOUND="Course Not Found";
+    public static final String COURSE_ALREADY_EXISTS="Course Already Exists";
 
     //Enrollment
     public static final String MAX_LIMIT_REACHED="Course is Not Available";

@@ -12,7 +12,9 @@ import java.util.UUID;
 @Repository
 public interface CourseRepo extends JpaRepository<Course,String> {
 
-   List<Coursedto> findByStudententity_Id(int id);
+   List<Course> findByStudententity_Id(int id);
+
+   boolean existsByStudententityIdAndName(int studentId, String courseName);
 
 
 }

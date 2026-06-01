@@ -22,7 +22,7 @@ public class CourceController {
     }
 
     @GetMapping("/getallcourses")
-    public List<Course> getallcourse(){
+    public ResponceModel getallcourse(){
         return courceService.getcourse();
     }
 

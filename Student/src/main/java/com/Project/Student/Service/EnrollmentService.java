@@ -14,6 +14,8 @@ import com.Project.Student.exception.NotFoundException;
 import com.Project.Student.util.ApiMessage;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -35,6 +37,7 @@ public class EnrollmentService {
     private CourseRepo courseRepo;
 
   @Transactional(rollbackOn = Exception.class)
+  @CacheEvict(value = "Enrollments",key = "#enrollmentDto.studentId")
     public ResponceModel insertEnroll(EnrollmentDto enrollmentDto){
         Studententity st=studentrepo.findById(enrollmentDto.getStudentId()).orElse(null);
         if(st == null){
@@ -65,6 +68,7 @@ public class EnrollmentService {
                                  enrollmentDto1);
     }
 
+    @Cacheable(value = "Enrollments")
     public ResponceModel getAllEnrollment(int pageNo,int pageSize){
         Pageable pageable= PageRequest.of(pageNo-1,pageSize);
         Page<Enrollment> enrollments=enrollmentRepo.findAll(pageable);
@@ -78,6 +82,7 @@ public class EnrollmentService {
                                  dtoList);
     }
 
+    @CacheEvict(value = "Enrollments",key = "#enrollId" )
     public ResponceModel updateEnrollment(int enrollId,EnrollmentDto enrollmentDto){
       Enrollment enrollment=enrollmentRepo.findById(enrollId).orElse(null);
       if(enrollment == null){
@@ -112,6 +117,7 @@ public class EnrollmentService {
       }
       }
 
+      @CacheEvict(value = "Enrollments",key = "#enrollId")
       public ResponceModel deletEnrollment(int enrollId){
       Enrollment enrollment=enrollmentRepo.findById(enrollId).orElse(null);
       if(enrollment == null){
