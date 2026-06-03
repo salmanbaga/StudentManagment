@@ -1,7 +1,9 @@
 package com.Project.Student.Controller;
 
 import com.Project.Student.Entity.Subject;
+import com.Project.Student.Models.ResponceModel;
 import com.Project.Student.Service.SubjectService;
+import com.Project.Student.dto.Subjectdto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,17 +15,17 @@ public class SubjectController {
     SubjectService subjectService;
 
     @PostMapping("/addsubject")
-    public String addSubject(@RequestBody Subject subject){
-        return subjectService.addSubject(subject);
+    public ResponceModel addSubject(@RequestBody Subjectdto subjectdto){
+        return subjectService.addSubject(subjectdto);
     }
 
     @PostMapping("/post/{studid}/{subid}")
-    public String postsubject(@PathVariable int studid, @PathVariable int subid){
+    public ResponceModel postsubject(@PathVariable int studid, @PathVariable int subid){
         return subjectService.postSubjecttoStudent(studid,subid);
     }
 
     @GetMapping("/searchSubjecttoStudent/{studid}")
-    public String searchSubjects(@PathVariable int studid){
+    public ResponceModel searchSubjects(@PathVariable int studid){
         return subjectService.searchSubjecttoStudent(studid);
     }
 }

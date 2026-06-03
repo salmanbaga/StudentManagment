@@ -60,8 +60,7 @@ public class Studentdto implements Serializable {
                 .email(entity.getEmail())
                 .status(entity.getStatus())
                 .build();
-
-
     }
+
 
 }

@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface SubjectRepo extends JpaRepository<Subject,Integer> {
 
-List<Subjectdto> findByStudententities_Id(int id);
+List<Subject> findByStudententities_Id(int id);
 }

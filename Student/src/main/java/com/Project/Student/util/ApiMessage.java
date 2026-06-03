@@ -19,4 +19,8 @@ public class ApiMessage {
     public static final String ENROLLMENT_ALREADY_EXITS="Enrollment Already Exits";
     public static final String ENROLLMENT_NOT_FOUND="Enrollment Not Found";
     public static final String ENROLLMENT_DELETED="Enrollment Deleted Successfully";
+
+    //SUBJECT
+    public static final String SUBJECT_NOT_FOUND="Subject Not Found";
+    public static final String SUBJECT_ALREADY_EXITS="Subject and Student Already Exits";
 }
