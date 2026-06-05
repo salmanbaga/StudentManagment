@@ -7,7 +7,6 @@ import com.Project.Student.Repo.Studentrepo;
 import com.Project.Student.Repo.SubjectRepo;
 import com.Project.Student.dto.Studentdto;
 import com.Project.Student.dto.Subjectdto;
-import com.Project.Student.exception.DublicateExceptionRecource;
 import com.Project.Student.exception.NotFoundException;
 import com.Project.Student.util.ApiMessage;
 import org.springframework.beans.factory.annotation.Autowired;
