@@ -16,6 +16,17 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+                        // 👤 USER access
+                        .requestMatchers("/student/get").hasAnyRole("USER", "ADMIN")
+
+                        // 👑 ADMIN only
+                        .requestMatchers("/student/delete/**").hasRole("ADMIN")
+
+                        // 👑 ADMIN only
+                        .requestMatchers("/student/put/**").hasRole("ADMIN")
+
+                        // 👑 ADMIN only
+                        .requestMatchers("/student/post/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .httpBasic(httpBasic -> {});
